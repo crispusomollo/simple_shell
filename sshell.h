@@ -29,19 +29,5 @@ typedef char mask_char;
 #define fors for
 #define elses else
 
-extern char **environ;
-
-/**
- * struct alias_a - the new struct defining the aliases
- * @nm: the name given to the alias
- * @val: the val given to the alias
- * @nxt: pointer to the other struct alias
- */
-typedef struct alias_a
-{
-	char *nm;
-	char *val;
-	struct alias_a *nxt;
-} alias_a;
 
 
