@@ -29,5 +29,6 @@ typedef char mask_char;
 #define fors for
 #define elses else
 
-
+/* Define the global environment usage */
+extern char environ;
 
