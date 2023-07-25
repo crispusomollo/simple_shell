@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 	int *xrt = &ret;
 	char *prompt1 = "$ ", *nline = "\n"; /*prompt,new_line*/
 
-	nm = argv[0];
+	name = argv[0];
 	histr = 1;
 	aliases = NULL;
 	signal(SIGINT, sig_handler);
