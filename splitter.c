@@ -71,7 +71,7 @@ char **_strtok(char *str1, char *delim)
 	for (td = 0; td < tokens; td++)
 	{
 		while (str1[idx] == *delim)
-			index++;
+			idx++;
 
 		alphbts = token_len(str1 + idx, delim);
 
