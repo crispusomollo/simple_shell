@@ -24,7 +24,7 @@ void handle_line(char **ln, ssize_t rd)
 	nline = malloc(nlen + 1);
 	if (!nline)
 		return;
-	j = 0;
+	p = 0;
 	oline = *ln;
 	for (p = 0; oline[p]; p++)
 	{
@@ -48,7 +48,7 @@ void handle_line(char **ln, ssize_t rd)
 					continue;
 				}
 				if (prev != ' ')
-					neline[q++] = ' ';
+					nline[q++] = ' ';
 				nline[q++] = ';';
 				if (next != ' ')
 					nline[q++] = ' ';
