@@ -22,7 +22,7 @@ char *get_args(char *buf, int *xret)
 		return (NULL);
 	if (rd == 1)
 	{
-		hist++;
+		histr++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, prompt1, 2);
 		return (get_args(buf, xret));
@@ -30,7 +30,7 @@ char *get_args(char *buf, int *xret)
 
 	buf[rd - 1] = '\0';
 	substitute_arg(&buf, xret);
-	handle_line(&buf, read);
+	handle_line(&buf, rd);
 
 	return (buf);
 }
