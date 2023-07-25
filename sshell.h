@@ -76,7 +76,7 @@ alias_t *aliases;
 char *_itoa(int num);
 char *get_location(char *cmd); /*command*/
 char **_strtok(char *line, char *del); /*delim*/
-int execute(char **args, char **front); /*execute*/
+int execute(char **par, char **sta); /*execute*/
 list_t *get_path_dir(char *pth); /*path*/
 ssize_t _getline(char **linepnr, size_t *nm, FILE *stream);
 void *_realloc(void *pnr, unsigned int o_size, unsigned int n_size);
@@ -98,7 +98,7 @@ int _strlen(const char *s);
 int _strcmp(char *s1, char *s2);
 int _strspn(char *s, char *accept);
 int _strncmp(const char *s1, const char *s2, size_t n);
-char *_strncat(char *dst, const char *src, size_t n); 
+char *_strncat(char *dst, const char *src, size_t n);
 char *_strcpy(char *dst, const char *src); /*dest*/
 char *_strcat(char *dst, const char *src);
 char *_strchr(char *st, char ch);
@@ -146,4 +146,3 @@ void help_unsetenv(void);
 
 int file_cmds(char *fpath, int *xret);
 #endif /* _SSHELL_H_ */
-

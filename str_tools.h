@@ -11,7 +11,7 @@
  */
 __home int _strlen(char *str)
 {
-	int n = 0; /*i*/
+	int n = 0;
 
 	while (*(str + n) != '\0')
 	{
@@ -45,7 +45,7 @@ __home int _strncmp(char *str1, char *str2, int lgt)
 }
 
 /**
- * _strcmp - compares the 2 given strings
+ * _strcmp - compares the two given strings
  * @st1: the first string
  * @st2: a second string
  *
@@ -60,7 +60,6 @@ __home int _strcmp(char *st1, char *st2)
 		st1++;
 		st2++;
 	}
-
 	return (*st1 - *st2);
 }
 
@@ -69,46 +68,43 @@ __home int _strcmp(char *st1, char *st2)
  * @str1: the first string
  * @str2: a second string
  *
- * Return: a pointer to the array or NULL.
+ * Return: a pointer to the array or NULL
  */
-
 __home char *_strconcat(char *str1, char *str2)
 {
 	int w = 0, x = 0, y = 0, z = 0;
-	char *c;
+	char *ch;
 
 	if (str1 == NULL)
 		str1 = "";
 	if (str2 == NULL)
 		str2 = "";
-	
+
 	while (*(str1 + w))
 		w++;
 
 	while (*(str2 + x))
 		x++;
 
-	c = malloc(sizeof(char) * (w + x + 3));
-	if (c == NULL)
+	ch = malloc(sizeof(char) * (w + x + 3));
+	if (ch == NULL)
 		return (NULL);
 
 	for (y = 0; y < w; y++)
 	{
-		*(c + y) = *(str1 + y);
+		*(ch + y) = *(str1 + y);
 	}
 
 	for (z = 0; z <= x; z++)
 	{
-		*(c + y + z) = *(str2 + z);
+		*(ch + y + z) = *(str2 + z);
 	}
 
-	return (c);
+	return (ch);
 }
 
 /**
  * _strdup - return a pointer to the allocated mem space
- * containing a copy of the string given as a parameter.
- *
  * @stn: a string
  *
  * Return: a pointer to a memory space or NULL
@@ -116,24 +112,22 @@ __home char *_strconcat(char *str1, char *str2)
 __home char *_strdup(char *stn)
 {
 	int lgt, x;
-	char *c;
+	chr *ch;
 
 	if (!stn)
 		return (NULL);
 
 	lgt = _strlen(stn);
-	c = malloc(sizeof(char) * lgt + 1);
+	ch = malloc(sizeof(char) * lgt + 1);
 
-	if (!c)
+	if (!ch)
 		return (NULL);
 
 	for (x = 0; x < lgt; x++)
-		c[x] = stn[x];
+		ch[x] = stn[x];
+	ch[x] = END;
 
-	c[x] = END;
-
-	return (c);
+	return (ch);
 }
 
 #endif
-

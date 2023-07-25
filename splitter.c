@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 /**
- * token_len - Locates delim index marking the end of first 
+ * token_len - Locates delim index marking the end of first
  *             token contained in a string
  * @str: string to be searched.
  * @del: delimiter character.
@@ -97,4 +97,3 @@ char **_strtok(char *str1, char *delim)
 
 	return (pntr);
 }
-

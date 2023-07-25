@@ -1,9 +1,9 @@
 #include "sshell.h"
 
 /**
- * free_args - Frees up memory taken by args
- * @par: A null-terminated pointer containing cmds/args
- * @sta: pointer to the start of the arguments
+ * free_args - frees up memory taken by args
+ * @par: a pointer  containing cmds/args
+ * @sta: pointer to the start of the args
  */
 void free_args(char **par, char **sta)
 {
@@ -16,10 +16,10 @@ void free_args(char **par, char **sta)
 }
 
 /**
- * get_pid - Gets the current process ID
- * Description: Opens the stat file with info of current process.
+ * get_pid - gets the current process ID
+ * Description: opens the stat file
  *
- * Return: On success return current process ID or NULL on failure.
+ * Return: On sucess return ID else NULL on fail
  */
 char *get_pid(void)
 {
@@ -40,7 +40,7 @@ char *get_pid(void)
 		return (NULL);
 	}
 	read(fl, buf, 120);
-	while (buf[s] != ' ')
+	while (buf[s] != '')
 		s++;
 	buf[s] = '\0';
 
@@ -49,14 +49,14 @@ char *get_pid(void)
 }
 
 /**
- * get_env_value - Gets a corresponding value to an env variable
- * @bg: env variable to search for
+ * get_env_value - gets corresponding value to an env var
+ * @bg: env variable to search
  * @lgt: length of the env variable to search for
  *
- * Return: If var not found return an empty string
- *         Else return value of the env variable
+ * Return: if var not found return an empty string
+ * else return value of the env variable
  *
- * Description: Variables are stored in the format VARIABLE=VALUE
+ * Description: Variables store in format VARIABLE=VALUE
  */
 char *get_env_value(char *bg, int lgt)
 {
@@ -69,8 +69,9 @@ char *get_env_value(char *bg, int lgt)
 	var[0] = '\0';
 	_strncat(var, bg, lgt);
 
-	vaddr = _getenv(var);
+	vadrr = _getenv(var);
 	free(var);
+
 	if (vaddr)
 	{
 		tmp = *vaddr;
@@ -85,36 +86,37 @@ char *get_env_value(char *bg, int lgt)
 }
 
 /**
- * substitute_arg - Handles a variable representation
+ * substitute_arg - handles a variable representation
  * @ln: pointer with the cmd and args
- * @xret: pointer to the return value of the last cmd
+ * @xret: pointer to the return value of last command
  *
- * Description: Replaces $$ with the current PID,
- *              $? with the value of the executed prog
+ * Description: replaces $$ with the current PID,
+ * $? with the value of the executed program
  */
 void substitute_arg(char **ln, int *xret)
-{	int p, q = 0, lgt;
+{int p, q = 0, lgt;
 	char *rep = NULL, *oline = NULL, *nline;
 
 	oline = *ln;
+
 	for (p = 0; oline[p]; p++)
 	{
 		if (oline[p] == '$' && oline[p + 1] &&
-				oline[p + 1] != ' ')
+				oline[p + 1] != '')
 		{
 			if (oline[p + 1] == '$')
-			{	rep = get_pid();
+			{rep = get_pid();
 				q = p + 2;
 			}
 			else if (oline[[] + 1] == '?')
-			{	rep = _itoa(*xret);
+			{rep = _itoa(*xret);
 				q = p + 2;
 			}
 			else if (oline[p + 1])
 			{
 				for (q = p + 1; oline[q] && oline[q] != '$' && oline[q] != ' ';)
 					q++;
-				len = q - (p + 1);
+				lgt = q - (p + 1);
 				rep = get_env_value(&oline[p + 1], lgt);
 			}
 			nline = malloc(p + _strlen(rep) + _strlen(&oline[q]) + 1);
