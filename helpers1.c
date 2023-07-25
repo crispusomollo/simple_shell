@@ -40,7 +40,7 @@ char *get_pid(void)
 		return (NULL);
 	}
 	read(fl, buf, 120);
-	while (buf[s] != '')
+	while (buf[s] != ' ')
 		s++;
 	buf[s] = '\0';
 
@@ -69,7 +69,7 @@ char *get_env_value(char *bg, int lgt)
 	var[0] = '\0';
 	_strncat(var, bg, lgt);
 
-	vadrr = _getenv(var);
+	vaddr = _getenv(var);
 	free(var);
 
 	if (vaddr)
@@ -102,7 +102,7 @@ void substitute_arg(char **ln, int *xret)
 	for (p = 0; oline[p]; p++)
 	{
 		if (oline[p] == '$' && oline[p + 1] &&
-				oline[p + 1] != '')
+				oline[p + 1] != ' ')
 		{
 			if (oline[p + 1] == '$')
 			{rep = get_pid();
