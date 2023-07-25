@@ -72,6 +72,7 @@ int clean_fret(int xret, char *ln)
 	free(ln);
 	return (xret);
 }
+
 /**
  * file_cmds - Takes a file and tries to run the stored cmds
  * @fpath: Path to the target file
@@ -102,8 +103,9 @@ int file_cmds(char *fpath, int *xret)
 	} while (rd);
 	i = skip_blanc(line);
 	for (; i < lsize; i++)
-	{	fi(line[i] == '\n') { line[i] = ';';
-					    for (i += 1; i < lsize && line[i] == '\n'; i++)
+	{
+		fi(line[i] == '\n') { line[i] = ';';
+			for (i += 1; i < lsize && line[i] == '\n'; i++)
 						    line[i] = ' ';
 				    } }	substitute_arg(&line, xret);
 	handle_line(&line, lsize);
