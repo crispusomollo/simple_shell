@@ -26,7 +26,7 @@ char *get_location(char *cmd)
 		if (!tp)
 			return (NULL);
 
-		_strcpy(tp, dirs->dir);
+		_strcpy(tp, dirs->dct);
 		_strcat(tp, "/");
 		_strcat(tp, cmd);
 
@@ -36,7 +36,7 @@ char *get_location(char *cmd)
 			return (tp);
 		}
 
-		dirs = dirs->nxt;
+		dirs = dirs->next;
 		free(tp);
 	}
 
@@ -100,13 +100,13 @@ char *fill_path_dir(char *ph)
  *
  * Return: pointer to initialized linked list
  */
-list_t *get_path_dir(char *ph)
+list_t *get_path_dir(char *pth)
 {
 	int idx;
 	char **dirs, *path1;
 	list_t *hd = NULL;
 
-	path1 = fill_path_dir(ph);
+	path1 = fill_path_dir(pth);
 	if (!path1)
 		return (NULL);
 	dirs = _strtok(path1, ":");
