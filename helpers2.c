@@ -136,7 +136,7 @@ ssize_t get_new_len(char *ln)
 					nlen += 2;
 					continue;
 				}
-				if (ln[i - 1] != ' ')
+				if (ln[s - 1] != ' ')
 					nlen++;
 				if (next != ' ')
 					nlen++;
