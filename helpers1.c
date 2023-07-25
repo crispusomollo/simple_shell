@@ -108,7 +108,7 @@ void substitute_arg(char **ln, int *xret)
 			{rep = get_pid();
 				q = p + 2;
 			}
-			else if (oline[[] + 1] == '?')
+			else if (oline[p + 1] == '?')
 			{rep = _itoa(*xret);
 				q = p + 2;
 			}
