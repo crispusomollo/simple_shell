@@ -34,31 +34,31 @@ extern char **environ;
 
 /**
  * struct alias_s - the new struct defining the aliases
- * @name: the name given to the alias
- * @value: the value given to the alias
- * @next: the pointer to the other struct alias_s
+ * @nm: the name given to the alias
+ * @val: the value given to the alias
+ * @nxt: the pointer to the other struct alias_a
  */
-typedef struct alias_a
+typedef struct alias_s
 {
 	char *nm;
 	char *val;
-	struct alias_a *nxt;
-} alias_a;
+	struct alias_s *nxt;
+} alias_t;
 
 /**
  * struct builtin_s - the new struct type defining the built-in commands
- * @name: the name of the built-in command
+ * @nm: the name of the built-in command
  * @fx: the function pointer to the built-in command fx.
  */
 typedef struct builtin_s
 {
 	char *nm;
 	int (*fx)(char **par, char **sta);
-} builtin_s;
+} builtin_t;
 
 /**
  * struct list_s - the struct type defining a linked list
- * @dir: the directory path
+ * @dct: the directory path
  * @next: the pointer to another struct list_s
  */
 typedef struct list_s
@@ -67,17 +67,16 @@ typedef struct list_s
 	struct list_s *next; /*the struct type*/
 } list_t;
 
-
 /* Linkedlist Global aliases */
 mask_int histr;
 mask_char *name;
 alias_t *aliases;
 
 /* The Main Helpers */
-char *_itoa(int nm); /*num*/
+char *_itoa(int num);
 char *get_location(char *cmd); /*command*/
 char **_strtok(char *line, char *del); /*delim*/
-int exec(char **args, char **front); /*execute*/
+int execute(char **args, char **front); /*execute*/
 list_t *get_path_dir(char *pth); /*path*/
 ssize_t _getline(char **linepnr, size_t *nm, FILE *stream);
 void *_realloc(void *pnr, unsigned int o_size, unsigned int n_size);
