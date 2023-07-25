@@ -74,10 +74,10 @@ alias_t *aliases;
 
 /* The Main Helpers */
 char *_itoa(int num);
-char *get_location(char *cmd); /*command*/
-char **_strtok(char *line, char *del); /*delim*/
-int execute(char **par, char **sta); /*execute*/
-list_t *get_path_dir(char *pth); /*path*/
+char *get_location(char *cmd);
+char **_strtok(char *line, char *del);
+int execute(char **par, char **sta);
+list_t *get_path_dir(char *pth);
 ssize_t _getline(char **linepnr, size_t *nm, FILE *stream);
 void *_realloc(void *pnr, unsigned int o_size, unsigned int n_size);
 void free_list(list_t *head);
@@ -99,7 +99,7 @@ int _strcmp(char *s1, char *s2);
 int _strspn(char *s, char *accept);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strncat(char *dst, const char *src, size_t n);
-char *_strcpy(char *dst, const char *src); /*dest*/
+char *_strcpy(char *dst, const char *src);
 char *_strcat(char *dst, const char *src);
 char *_strchr(char *st, char ch);
 
@@ -111,7 +111,7 @@ int builtin_help(char **par, __silent char **sta);
 int builtin_alias(char **par, __silent char **sta);
 int builtin_setenv(char **par, __silent char **sta);
 int builtin_unsetenv(char **par, __silent char **sta);
-int (*get_builtin(char *cmd))(char **par, char **sta); /*command*/
+int (*get_builtin(char *cmd))(char **par, char **sta);
 
 /* The Builtin Helpers */
 void free_env(void);
@@ -131,7 +131,7 @@ int create_error(char **par, int err);
 /* The Linkedlist Helpers */
 void free_list(list_t *hd);
 void free_alias_list(alias_t *hd);
-list_t *add_node_end(list_t **hd, char *dir); /*dir*/
+list_t *add_node_end(list_t **hd, char *dir);
 alias_t *add_alias_end(alias_t **hd, char *nm, char *val);
 
 void help_cd(void);

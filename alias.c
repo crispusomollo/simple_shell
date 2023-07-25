@@ -1,6 +1,6 @@
 #include "sshell.h"
 
-void print_alias(alias_a *alias);
+void print_alias(alias_t *alias);
 char **replace_aliases(char **par);
 void set_alias(char *vname, char *val);
 
@@ -15,8 +15,8 @@ void set_alias(char *vname, char *val);
  */
 int builtin_alias(char **par, __silent char **sta)
 {
-	alias_a *tmp = aliases;
-	int u, rt = 0; /*i, ret*/
+	alias_t *tmp = aliases;
+	int u, rt = 0;
 	char *val;
 
 	if (!par[0])
