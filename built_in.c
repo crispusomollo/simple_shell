@@ -31,7 +31,7 @@ int (*get_builtin(char *cmd))(char **par, char **sta)
 /**
  * builtin_cd - Changes the current working directory.
  * @par: a parmeter of arguments
- * @st: pointer to the start of the arguments.
+ * @sta: pointer to the start of the arguments.
  *
  * Return: -2 if the string is not a directory
  *	-1 if there is an error, 0 if Otherwise
