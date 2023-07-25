@@ -114,7 +114,7 @@ int run_args(char **args, char **front, int *exe_ret)
 		ret = *exe_ret;
 	}
 
-	hist++;
+	histr++;
 
 	for (i = 0; args[i]; i++)
 		free(args[i]);
