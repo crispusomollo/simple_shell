@@ -22,7 +22,7 @@ char *get_location(char *cmd)
 
 	while (dirs)
 	{
-		tp = malloc(_strlen(dirs->dir) + _strlen(cmd) + 2);
+		tp = malloc(_strlen(dirs->dct) + _strlen(cmd) + 2);
 		if (!tp)
 			return (NULL);
 
