@@ -7,8 +7,8 @@ void set_alias(char *vname, char *val);
 /**
  * builtin_alias - a built in command
  * that prints all aliases
- * @args: arguments array.
- * @front: pointer to the start of arguments.
+ * @par: arguments array.
+ * @sta: pointer to the start of arguments.
  *
  * Return: If an error occurs return -1.
  *         else return 0.
@@ -111,7 +111,7 @@ void print_alias(alias_a *alias)
 }
 /**
  * replace_aliases - Checks the args and replaces any alias that matches
- * @args: a 2-D pointer to the args
+ * @par: a 2-D pointer to the args
  *
  * Return: a 2-D pointer to the args.
  */

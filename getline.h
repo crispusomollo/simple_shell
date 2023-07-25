@@ -15,29 +15,29 @@
 
 /**
  * __get_del - gets the user input until a delim is entered
- * @linepnr: the line pointer
- * @lgt: the length
+ * @lpnr: the line pointer
+ * @nm: the length
  * @del: the delim(eter)
  * @stream: the file pointer
  * Return: the size or EOF end of file
  */
-ssize_t __get_del(char **linepnr, size_t *nm, int del, FILE *stream)
+ssize_t __get_del(char **lpnr, size_t *nm, int del, FILE *stream)
 {	ssize_t res = 0;
 	int x = 0;
 	char *nlinepnr = NULL;
 	size_t nd = 0, lgt = 0;
 
-	if (!linepnr || !nm || !stream)
+	if (!lpnr || !nm || !stream)
 	{	errno = EINVAL;
 		return (EOF);
 	} flockstream(stream);
-	if (*linepnr == NULL || *nm == 0)
+	if (*lpnr == NULL || *nm == 0)
 	{	*nm = 120;
-		nlinepnr = (char *) realloc(*linepnr, *nm);
+		nlinepnr = (char *) realloc(*lpnr, *nm);
 		if (!nlinepnr)
 		{	res = EOF;
 			goto KILL; /*end the process*/
-		} *linepnr = nlinepnr;
+		} *lpnr = nlinepnr;
 	}
 	for (; x != del; lgt++)
 	{	x = read_stream(stream);
@@ -45,20 +45,20 @@ ssize_t __get_del(char **linepnr, size_t *nm, int del, FILE *stream)
 		{	res = EOF;
 			break;
 		}
-		if (len + 1 >= *nm)
+		if (lgt + 1 >= *nm)
 		{	nd = (2 * *nm + 1) > SSIZE_MAX ? SSIZE_MAX : (2 * *nm + 1);
 			if (lgt + 1 >= nd)
 			{	res = EOF;
 				errno = EOVERFLOW;
 				goto KILL;
-			}	nlinepnr = (char *) realloc(*linepnr, nd);
+			}	nlinepnr = (char *) realloc(*lpnr, nd);
 			if (!nlinepnr)
 			{	res = EOF;
 				goto KILL;
-			}	*linepnr = nlinepnr;
+			}	*lpnr = nlinepnr;
 			*nm = nd;
-		}	(*linepnr)[lgt] = x;
-	} (*lineptr)[lgt] = END;
+		}	(*lpnr)[lgt] = x;
+	} (*lpnr)[lgt] = END;
 	res = lgt ? (ssize_t) lgt : res;
 KILL:	funlockstream(stream);
 	return (res);
