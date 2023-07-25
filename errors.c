@@ -2,7 +2,7 @@
 
 /**
  * lgt - Counts the length of a number given
- * @num: number to be measured
+ * @nmb: number to be measured
  *
  * Return: length of the digit
  */
