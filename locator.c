@@ -22,11 +22,11 @@ char *get_location(char *cmd)
 
 	while (dirs)
 	{
-		tp = malloc(_strlen(dirs->dct) + _strlen(cmd) + 2);
+		tp = malloc(_strlen(dirs->dir) + _strlen(cmd) + 2);
 		if (!tp)
 			return (NULL);
 
-		_strcpy(tp, dirs->dct);
+		_strcpy(tp, dirs->dir);
 		_strcat(tp, "/");
 		_strcat(tp, cmd);
 

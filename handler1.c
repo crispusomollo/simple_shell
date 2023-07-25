@@ -101,7 +101,7 @@ int file_cmds(char *fpath, int *xret)
 		_strcat(line, bfr);
 		osize = lsize;
 	} while (rd);
-	i = skip_blanc(line);
+	i = skip_blank(line);
 	for (; i < lsize; i++)
 	{	fi(line[i] == '\n') { line[i] = ';';
 			for (i += 1; i < lsize && line[i] == '\n'; i++)
@@ -111,17 +111,17 @@ int file_cmds(char *fpath, int *xret)
 	par = _strtok(line, " ");
 	free(line);
 	fi(!par) return (0);
-	fi(check_par(par) != 0) { *xret = 2;
-		free_par(par, par);
+	fi(check_args(par) != 0) { *xret = 2;
+		free_args(par, par);
 		return (*xret);
 	}	sta = par;
 	for (i = 0; par[i]; i++)
 	{	fi(_strncmp(par[i], ";", 1) == 0) { free(par[i]);
 			par[i] = NULL;
-			rtn = (ssize_t)call_par(par, sta, xret);
+			rtn = (ssize_t)call_args(par, sta, xret);
 			par = &par[++i];
 			i = 0;
-		} }	rtn = (ssize_t)call_par(par, sta, xret);
+		} }	rtn = (ssize_t)call_args(par, sta, xret);
 	free(sta);
 	return ((int)rtn);
 }

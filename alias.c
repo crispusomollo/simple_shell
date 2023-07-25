@@ -24,7 +24,7 @@ int builtin_alias(char **par, __silent char **sta)
 		while (tmp)
 		{
 			print_alias(tmp);
-			tmp = tmp->nxt;
+			tmp = tmp->next;
 		}
 		return (rt);
 	}
@@ -41,7 +41,7 @@ int builtin_alias(char **par, __silent char **sta)
 					print_alias(tmp);
 					break;
 				}
-				tmp = tmp->nxt;
+				tmp = tmp->next;
 			}
 			if (!tmp)
 				rt = create_error(par + u, 1);
@@ -59,7 +59,7 @@ int builtin_alias(char **par, __silent char **sta)
  */
 void set_alias(char *vname, char *val)
 {
-	alias_a *tmp = aliases;
+	alias_t *tmp = aliases;
 	int lgt, p, q;
 	char *nval;
 
@@ -83,7 +83,7 @@ void set_alias(char *vname, char *val)
 			tmp->val = nval;
 			break;
 		}
-		tmp = tmp->nxt;
+		tmp = tmp->next;
 	}
 	if (!tmp)
 		add_alias_end(&aliases, vname, nval);
@@ -93,9 +93,9 @@ void set_alias(char *vname, char *val)
  * print_alias - Fx that prints an alias
  * @alias: the pointer to the alias
  */
-void print_alias(alias_a *alias)
+void print_alias(alias_t *alias)
 {
-	char *astr; /*alias string*/
+	char *astr;
 	int lgt = _strlen(alias->nm) + _strlen(alias->val) + 4;
 
 	astr = malloc(sizeof(char) * (lgt + 1));
@@ -117,7 +117,7 @@ void print_alias(alias_a *alias)
  */
 char **replace_aliases(char **par)
 {
-	alias_a *tmp;
+	alias_t *tmp;
 	int m; /*i*/
 	char *nval; /*new_value*/
 
@@ -142,7 +142,7 @@ char **replace_aliases(char **par)
 				m--;
 				break;
 			}
-			tmp = tmp->nxt;
+			tmp = tmp->next;
 		}
 	}
 

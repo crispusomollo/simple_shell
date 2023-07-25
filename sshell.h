@@ -42,7 +42,7 @@ typedef struct alias_s
 {
 	char *nm;
 	char *val;
-	struct alias_s *nxt;
+	struct alias_s *next;
 } alias_t;
 
 /**
@@ -63,8 +63,8 @@ typedef struct builtin_s
  */
 typedef struct list_s
 {
-	char *dct; /*the directory variable*/
-	struct list_s *next; /*the struct type*/
+	char *dir;
+	struct list_s *next;
 } list_t;
 
 /* Linkedlist Global aliases */
