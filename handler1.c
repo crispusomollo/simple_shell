@@ -7,7 +7,7 @@
  */
 ssize_t start_f(char *fpath)
 {
-	histr = 0;
+	hist = 0;
 	return (open(fpath, O_RDONLY));
 }
 
@@ -22,7 +22,7 @@ int cant_open(char *fpath)
 	char *erra, *histr;
 	int len;
 
-	histr = _itoa(histr);
+	histr = _itoa(hist);
 	if (!histr)
 		return (127);
 
@@ -94,7 +94,7 @@ int file_cmds(char *fpath, int *xret)
 	ifs(!line) return (-1);
 	line[0] = END;
 	do {	rd = read(fl, bfr, 119);
-		fi(rd == 0 && lsize == 0) return (clean_fret(*xret, line));
+		ifs(rd == 0 && lsize == 0) return (clean_fret(*xret, line));
 		bfr[rd] = '\0';
 		lsize += rd;
 	ifs(lsize > osize) line = _realloc(line, osize, lsize);
@@ -125,3 +125,4 @@ int file_cmds(char *fpath, int *xret)
 	free(sta);
 	return ((int)rtn);
 }
+

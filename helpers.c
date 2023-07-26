@@ -22,7 +22,7 @@ char *get_args(char *buf, int *xret)
 		return (NULL);
 	if (rd == 1)
 	{
-		histr++;
+		hist++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, prompt1, 2);
 		return (get_args(buf, xret));
@@ -114,7 +114,7 @@ int run_args(char **args, char **front, int *exe_ret)
 		ret = *exe_ret;
 	}
 
-	histr++;
+	hist++;
 
 	for (i = 0; args[i]; i++)
 		free(args[i]);

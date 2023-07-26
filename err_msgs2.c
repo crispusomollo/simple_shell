@@ -11,7 +11,7 @@ char *error_126(char **par)
 	char *erra, *histr;
 	int lgt;
 
-	histr = _itoa(histr);
+	histr = _itoa(hist);
 	if (!histr)
 		return (NULL);
 
@@ -45,7 +45,7 @@ char *error_127(char **par)
 	char *erra, *histr;
 	int lnt;
 
-	histr = _itoa(histr);
+	histr = _itoa(hist);
 	if (!histr)
 		return (NULL);
 
