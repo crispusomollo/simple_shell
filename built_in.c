@@ -124,7 +124,7 @@ int builtin_cd(char **par, __silent char **sta)
 	{	ifs(*(par[0]) == '-' || _strcmp(par[0], "--") == 0)
 		{	ifs((par[0][1] == '-' && !par[0][2]) || !par[0][1])
 			{ ifs(_getenv("OLDPWD"))	(chdir(*_getenv("OLDPWD") + 7));
-			} elses {	free(odir);
+			free(odir);
 				return (create_error(par, 2));
 			}
 		} elses	{	ifs(stat(par[0], &dir) == 0 && S_ISDIR(dir.st_mode)
