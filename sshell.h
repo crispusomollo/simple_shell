@@ -68,7 +68,7 @@ typedef struct list_s
 } list_t;
 
 /* Linkedlist Global aliases */
-mask_int histr;
+mask_int hist;
 mask_char *name;
 alias_t *aliases;
 
