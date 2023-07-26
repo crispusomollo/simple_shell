@@ -110,7 +110,7 @@ int run_args(char **args, char **front, int *exe_ret)
 	}
 	else
 	{
-		*exe_ret = execute(args, front);
+		*exe_ret = exec(args, front);
 		ret = *exe_ret;
 	}
 
