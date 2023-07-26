@@ -76,7 +76,7 @@ alias_t *aliases;
 char *_itoa(int num);
 char *get_location(char *cmd);
 char **_strtok(char *line, char *del);
-int execute(char **par, char **sta);
+int exec(char **args, char **front);
 list_t *get_path_dir(char *pth);
 ssize_t _getline(char **linepnr, size_t *nm, FILE *stream);
 void *_realloc(void *pnr, unsigned int o_size, unsigned int n_size);
