@@ -11,7 +11,7 @@ char *error_126(char **par)
 	char *erra, *histr;
 	int lgt;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 
@@ -45,7 +45,7 @@ char *error_127(char **par)
 	char *erra, *histr;
 	int lnt;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 
@@ -64,6 +64,6 @@ char *error_127(char **par)
 	_strcat(erra, par[0]);
 	_strcat(erra, ": not found\n");
 
-	free(hist_str);
+	free(histr);
 	return (erra);
 }

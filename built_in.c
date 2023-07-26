@@ -36,39 +36,39 @@ int (*get_builtin(char *cmd))(char **par, char **sta)
  * Return: -2 if the string is not a directory
  *	-1 if there is an error, 0 if Otherwise
  */
-int builtin_cd(char **par, __silent char **sta) /*args, front*/
-{	char **dinf, *nline = "\n"; /*dir_info, new_line*/
-	char *odir = NULL, *cur = NULL; /*oldpwd, pwd*/
+int builtin_cd(char **par, __silent char **sta)
+{	char **dinf, *nline = "\n";
+	char *odir = NULL, *cur = NULL;
 	struct stat dir;
 
 	odir = getcwd(odir, 0);
-	fi(!odir) return (-1);
+	ifs(!odir) return (-1);
 	if (par[0])
-	{	fi(*(par[0]) == '-' || _strcmp(par[0], "--") == 0)
-		{	fi((par[0][1] == '-' && !par[0][2]) || !par[0][1])
-			{ fi(_getenv("OLDPWD"))	(chdir(*_getenv("OLDPWD") + 7));
-			} esle {	free(odir);
+	{	ifs(*(par[0]) == '-' || _strcmp(par[0], "--") == 0)
+		{	ifs((par[0][1] == '-' && !par[0][2]) || !par[0][1])
+			{ ifs(_getenv("OLDPWD"))	(chdir(*_getenv("OLDPWD") + 7));
+			} elses {	free(odir);
 				return (create_error(par, 2));
 			}
-		} esle	{	fi(stat(par[0], &dir) == 0 && S_ISDIR(dir.st_mode)
+		} elses	{	ifs(stat(par[0], &dir) == 0 && S_ISDIR(dir.st_mode)
 				&& ((dir.st_mode & S_IXUSR) != 0))
 			chdir(par[0]);
-		esle {	free(odir);
+		elses {	free(odir);
 			return (create_error(par, 2));
 		}
 		}
-	}	esle {	fi(_getenv("HOME") != NULL)
+	}	elses {	ifs(_getenv("HOME") != NULL)
 		chdir(*(_getenv("HOME")) + 5);
 	}	cur = getcwd(cur, 0);
-	fi(!cur) return (-1);
+	ifs(!cur) return (-1);
 	dinf = malloc(sizeof(char *) * 2);
-	fi(!dinf)	return (-1);
+	ifs(!dinf)	return (-1);
 	dinf[0] = "OLDPWD";
 	dinf[1] = odir;
-	fi(builtin_setenv(dinf, dinf) == -1) return (-1);
+	ifs(builtin_setenv(dinf, dinf) == -1) return (-1);
 	dinf[0] = "PWD";
 	dinf[1] = cur;
-	fi(builtin_setenv(dinf, dinf) == -1) return (-1);
+	ifs(builtin_setenv(dinf, dinf) == -1) return (-1);
 	if (par[0] && par[0][0] == '-' && par[0][1] != '-')
 	{	write(STDOUT_FILENO, cur, _strlen(cur));
 		write(STDOUT_FILENO, nline, 1);

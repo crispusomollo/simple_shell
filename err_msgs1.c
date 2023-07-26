@@ -11,7 +11,7 @@ char *error_env(char **par)
 	char *erra, *histr;
 	int lnt;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 
@@ -69,7 +69,7 @@ char *error_2_exit(char **par)
 	char *erra, *histr;
 	int lnt;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 
@@ -103,7 +103,7 @@ char *error_2_cd(char **par)
 	char *erra, *histr;
 	int len;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 
@@ -142,7 +142,7 @@ char *error_2_syntax(char **par)
 	char *erra, *histr;
 	int lnt;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (NULL);
 

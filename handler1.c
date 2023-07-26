@@ -7,7 +7,7 @@
  */
 ssize_t start_f(char *fpath)
 {
-	hist = 0;
+	histr = 0;
 	return (open(fpath, O_RDONLY));
 }
 
@@ -22,7 +22,7 @@ int cant_open(char *fpath)
 	char *erra, *histr;
 	int len;
 
-	histr = _itoa(hist);
+	histr = _itoa(histr);
 	if (!histr)
 		return (127);
 
@@ -41,9 +41,9 @@ int cant_open(char *fpath)
 	_strcat(erra, fpath);
 	_strcat(erra, "\n");
 
-	free(hist_str);
-	write(STDERR_FILENO, error, len);
-	free(error);
+	free(histr);
+	write(STDERR_FILENO, erra, len);
+	free(erra);
 	return (127);
 }
 
@@ -88,35 +88,35 @@ int file_cmds(char *fpath, int *xret)
 	char *line, **par, **sta, bfr[120];
 
 	fl = start_f(fpath);
-	fi(fl == -1) { *xret = cant_open(fpath);
+	ifs(fl == -1) { *xret = cant_open(fpath);
 		return (*xret);
 	}	line = (char *) malloc(sizeof(char) * osize);
-	fi(!line) return (-1);
+	ifs(!line) return (-1);
 	line[0] = END;
 	do {	rd = read(fl, bfr, 119);
 		fi(rd == 0 && lsize == 0) return (clean_fret(*xret, line));
 		bfr[rd] = '\0';
 		lsize += rd;
-	fi(lsize > osize) line = _realloc(line, osize, lsize);
+	ifs(lsize > osize) line = _realloc(line, osize, lsize);
 		_strcat(line, bfr);
 		osize = lsize;
 	} while (rd);
 	i = skip_blank(line);
 	for (; i < lsize; i++)
-	{	fi(line[i] == '\n') { line[i] = ';';
+	{	ifs(line[i] == '\n') { line[i] = ';';
 			for (i += 1; i < lsize && line[i] == '\n'; i++)
 				line[i] = ' ';
 		} }	substitute_arg(&line, xret);
 	handle_line(&line, lsize);
 	par = _strtok(line, " ");
 	free(line);
-	fi(!par) return (0);
-	fi(check_args(par) != 0) { *xret = 2;
+	ifs(!par) return (0);
+	ifs(check_args(par) != 0) { *xret = 2;
 		free_args(par, par);
 		return (*xret);
 	}	sta = par;
 	for (i = 0; par[i]; i++)
-	{	fi(_strncmp(par[i], ";", 1) == 0) { free(par[i]);
+	{	ifs(_strncmp(par[i], ";", 1) == 0) { free(par[i]);
 			par[i] = NULL;
 			rtn = (ssize_t)call_args(par, sta, xret);
 			par = &par[++i];
